@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import ProductForm
-from django.http import HttpResponseRedirect
+from .models import Product, Price
 
 # Create your views here.
-def index(request):
+def home(request):
 
+    products = Product.objects.all()
+    print(products[4])
     return render(request, 'inventory/home.html' )
 
 
@@ -15,8 +17,14 @@ def createProduct(request):
         form = ProductForm( request.POST )
 
         if form.is_valid():
-            print( request.POST )
-            return HttpResponseRedirect("Gracias!")
+            product = form.save(commit=False)
+            price_product = form.cleaned_data['price']
+            product.save()
+
+            price = Price(product=product, amount=price_product)
+            price.save()
+
+            return redirect('inventory:home')
     else:
         form = ProductForm()
 
