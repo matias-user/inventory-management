@@ -2,13 +2,6 @@ from django.shortcuts import render, redirect
 from .forms import ProductForm
 from .models import Product, Price
 
-# Create your views here.
-def home(request):
-
-    products = Product.objects.all()
-    print(products[4])
-    return render(request, 'inventory/home.html' )
-
 
 def createProduct(request):
 
@@ -27,6 +20,19 @@ def createProduct(request):
             return redirect('inventory:home')
     else:
         form = ProductForm()
-
-
     return render(request, 'inventory/createProduct.html',{"form":form})
+
+
+def listProduct(request):
+
+    products_with_price = []
+    products = Product.objects.all()[:20]
+    for product in products:
+        price = Price.objects.filter(product=product).first()
+
+        products_with_price.append({
+            'product':product,
+            'price': price.amount if price else None
+        })    
+    print( products_with_price )
+    return render(request, 'inventory/home.html',{'products_with_price':products_with_price})
