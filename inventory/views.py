@@ -39,4 +39,5 @@ def listProduct(request):
 
 def deleteProduct(request):
 
-    return render(request)
+    
+    return redirect('inventory:home')

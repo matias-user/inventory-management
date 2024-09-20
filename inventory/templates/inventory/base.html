@@ -8,11 +8,15 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    {% include 'inventory/nav.html' %}
+    {% include 'inventory/nav.html' %}  
     <main class='row mt-4' >
-        {% block content %}{% endblock %}
+        {% block content %}
+        
+        
+        {% endblock %}
         {% include 'inventory/menuFilters.html' %}
     </main>
-
+        
+    
 </body>
 </html>
