@@ -34,5 +34,9 @@ def listProduct(request):
             'product':product,
             'price': price.amount if price else None
         })    
-    print( products_with_price )
     return render(request, 'inventory/home.html',{'products_with_price':products_with_price})
+
+
+def deleteProduct(request):
+
+    return render(request)
