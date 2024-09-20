@@ -40,6 +40,9 @@ def listProduct(request):
     return render(request, 'inventory/home.html',{'products_with_price':products_with_price})
 
 
-def deleteProduct(request, product):
+def deleteProduct(request, product_id):
+
+    product = Product.objects.get(id=product_id)
+    product.delete()
 
     return JsonResponse({'redirect_url':'/home/'})
