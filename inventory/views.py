@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
+
 from .forms import ProductForm
 from .models import Product, Price
+
 
 
 def createProduct(request):
@@ -37,7 +40,6 @@ def listProduct(request):
     return render(request, 'inventory/home.html',{'products_with_price':products_with_price})
 
 
-def deleteProduct(request):
+def deleteProduct(request, product):
 
-    
-    return redirect('inventory:home')
+    return JsonResponse({'redirect_url':'/home/'})

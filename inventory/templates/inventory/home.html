@@ -10,10 +10,10 @@
     <section>
         <table class="table tabl-bordered mt-3" >
             <tr>
-                <td>SKU producto</td>
-                <td>Nombre produto</td>
-                <td>Precio</td>
-                <td>Acción</td>
+                <th>SKU producto</th>
+                <th>Nombre produto</th>
+                <th>Precio</th>
+                <th>Acción</th>
             </tr>
             {% for item in products_with_price %}
             <tr>
@@ -27,9 +27,13 @@
                     {{ item.price }}
                 </td>
                 <td>
-                  <button type="button" class="btn btn-danger" id="borrar" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <button type="button" class="btn btn-danger borrar" 
+                    data-idproduct="{{ item.product.id }}" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#exampleModal">
                     Borrar producto
                   </button>
+
                 </td>
             </tr>
             {% endfor %}
@@ -49,7 +53,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary delete-confirm">Save changes</button>
       </div>
     </div>
   </div>
