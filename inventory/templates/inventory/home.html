@@ -27,15 +27,24 @@
                   <td>
                       {{ item.price }}
                   </td>
-                  <td>
+                  <td class="text-center" >
+                    <button
+                      class="btn btn-warning"
+                      data-idproduct="{{item.product.id}}" >
+                      <a href="{{}}">
+                        Editar
+
+                      </a>
+                    </button>
+
                     <button type="button" class="btn btn-danger borrar" 
                       data-idproduct="{{ item.product.id }}" 
                       data-bs-toggle="modal" 
                       data-bs-target="#exampleModal">
-                      Borrar producto
+                      Borrar
                     </button>
-  
                   </td>
+
               </tr>
               {% endfor %}
             </tbody>
