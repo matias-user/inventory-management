@@ -28,14 +28,9 @@
                       {{ item.price }}
                   </td>
                   <td class="text-center" >
-                    <button
-                      class="btn btn-warning"
-                      data-idproduct="{{item.product.id}}" >
-                      <a href="{{}}">
+                    <a class="btn btn-warning" href="{% url 'inventory:edit' item.product.id %}">
                         Editar
-
-                      </a>
-                    </button>
+                    </a>
 
                     <button type="button" class="btn btn-danger borrar" 
                       data-idproduct="{{ item.product.id }}" 

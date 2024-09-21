@@ -46,3 +46,21 @@ def deleteProduct(request, product_id):
     product.delete()
 
     return JsonResponse({'redirect_url':'/home/'})
+
+
+def editProduct(request, product_id):
+
+    product = Product.objects.get(id=product_id)
+    price = Price.objects.filter(product=product).first()
+
+    if request.method == 'POST':
+        product_form = ProductForm( request.POST, instance=product )
+        product_form.save()
+        
+        price.amount = product_form.cleaned_data['price']
+        price.save()
+        return redirect('inventory:home')
+    else: 
+        product_form = ProductForm(initial={'price':price.amount}, instance=product )
+
+    return render(request, 'inventory/edit.html',{'product_form':product_form} )
