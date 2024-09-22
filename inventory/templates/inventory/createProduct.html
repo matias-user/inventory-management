@@ -1,4 +1,5 @@
 {% extends 'inventory/base.html' %}
+{% load static %}
 {% block content %}
 <div  class="col-8" >
     <form class="m-3" action="" method="POST" >
@@ -8,4 +9,5 @@
         <a class="btn btn-secondary mt-2 ms-4" href="{% url 'inventory:home' %}" >Volver a inicio</a> 
     </form>
 </div>
+<script src="{% static 'js/utilities/insertSkuFormProduct.js' %}"></script>
 {% endblock %}

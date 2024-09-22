@@ -7,7 +7,9 @@ class ProductForm(forms.ModelForm):
     name = forms.CharField( widget=forms.TextInput(attrs={'class':'form-control'}) )
     quantity = forms.IntegerField(widget=forms.NumberInput(attrs={'class':'form-control'}))
     sku = forms.CharField( widget=forms.TextInput(attrs={'class':'form-control'}) )
+    brand = forms.CharField( widget=forms.TextInput(attrs={'class':'form-control'}) )
 
+    
     class Meta:
         model = Product
         fields = '__all__'

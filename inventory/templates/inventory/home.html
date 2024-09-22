@@ -8,6 +8,16 @@
 
     <section >
         <table class="table table-bordered table-hover mt-3 table-secondary" >
+          <tr>
+            <td colspan="4" >
+              <select class="form-select form-select-sm" aria-label="Ordenar de menor a mayor" >
+                <option disabled>Ordenar de menor a mayor</option>
+                <option value="price">Precio</option>
+                <option value="quantity">Cantidad</option>
+                <option value="name">Nombre</option>
+              </select>
+            </td>
+          </tr>
             <tr>
                 <th>SKU producto</th>
                 <th>Nombre produto</th>
@@ -66,5 +76,6 @@
 
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script type="module" src="{% static 'js/app.js' %}"></script>
+  <script src="{% static 'js/utilities/filterProducts.js' %}"></script>
 
 {% endblock %}

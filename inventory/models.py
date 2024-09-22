@@ -8,6 +8,15 @@ class Product(models.Model):
     brand = models.CharField(max_length=255)
     created_date = models.DateTimeField( auto_now_add=True )
 
+
+    def __str__(self) -> str:
+        return self.name
+
+class Dimension(models.Model):
+    product = models.ForeignKey( Product, on_delete=models.CASCADE )
+    height = models.FloatField(default=0)
+    weight = models.FloatField(default=0)
+
 class Price(models.Model):
     product = models.ForeignKey( Product, on_delete=models.CASCADE )
     amount = models.IntegerField( default=0 )

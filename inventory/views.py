@@ -64,3 +64,16 @@ def editProduct(request, product_id):
         product_form = ProductForm(initial={'price':price.amount}, instance=product )
 
     return render(request, 'inventory/edit.html',{'product_form':product_form} )
+
+def orderProducts(request, characteristic):
+    products_with_price = []
+    products = Product.objects.order_by(characteristic)[:20]
+    print( products )
+    for product in products:
+        price = Price.objects.filter(product=product).first()
+
+        products_with_price.append({
+            'product':product,
+            'price': price.amount if price else None
+        })    
+    return render(request, 'inventory/home.html', {'products_with_price':products_with_price})
