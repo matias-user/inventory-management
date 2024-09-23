@@ -1,4 +1,4 @@
-import { deleteProduct } from './utilities/modal.js'
+import { deleteProduct } from './utilities/deleteProduct.js'
 
 document.addEventListener('DOMContentLoaded', function () {
     const deleteButtons = document.querySelectorAll('.borrar');

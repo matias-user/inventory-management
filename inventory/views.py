@@ -11,15 +11,15 @@ def createProduct(request):
     if request.method == 'POST':
 
         form = ProductForm( request.POST )
+        print( form['material_type'] )
 
         if form.is_valid():
             product = form.save(commit=False)
             price_product = form.cleaned_data['price']
-            product.save()
+            # product.save()
 
             price = Price(product=product, amount=price_product)
-            price.save()
-
+            # price.save()
             return redirect('inventory:home')
     else:
         form = ProductForm()
@@ -71,7 +71,7 @@ def orderProducts(request, characteristic):
     print( products )
     for product in products:
         price = Price.objects.filter(product=product).first()
-
+        print( product.dimension_set.all() )
         products_with_price.append({
             'product':product,
             'price': price.amount if price else None

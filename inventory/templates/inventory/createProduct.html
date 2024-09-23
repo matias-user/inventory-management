@@ -5,9 +5,19 @@
     <form class="m-3" action="" method="POST" >
         {% csrf_token %}
         {{form.as_p}}
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-bs-target
+        </button>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body bg-primary">
+              Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            </div>
+          </div>
         <button class="btn btn-success mt-2" type="submit" >Ingresar</button>
         <a class="btn btn-secondary mt-2 ms-4" href="{% url 'inventory:home' %}" >Volver a inicio</a> 
+    
     </form>
 </div>
+<script src="{% static 'js/bootstrap.min.js' %}" ></script>
 <script src="{% static 'js/utilities/insertSkuFormProduct.js' %}"></script>
 {% endblock %}

@@ -7,15 +7,22 @@ class Product(models.Model):
     sku = models.CharField( max_length=255, unique=True )
     brand = models.CharField(max_length=255)
     created_date = models.DateTimeField( auto_now_add=True )
+    description = models.CharField( max_length=255, blank=True )
 
 
     def __str__(self) -> str:
         return self.name
 
 class Dimension(models.Model):
-    product = models.ForeignKey( Product, on_delete=models.CASCADE )
     height = models.FloatField(default=0)
     weight = models.FloatField(default=0)
+
+class Characteristic(models.Model):
+    product = models.ForeignKey( Product, on_delete=models.CASCADE )
+    dimension = models.ForeignKey(Dimension, on_delete=models.CASCADE)
+    color = models.CharField(max_length=255, blank=True)
+    material_type = models.CharField(max_length=255, blank=True )
+
 
 class Price(models.Model):
     product = models.ForeignKey( Product, on_delete=models.CASCADE )
