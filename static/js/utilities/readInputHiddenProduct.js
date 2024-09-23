@@ -1,21 +1,21 @@
 // Este script pertenece al template inventory/createProduct.html
 const inputHeight = document.getElementById('input_height');
-const inputWeight = document.getElementById('input_weight');
+const inputWidth = document.getElementById('input_width');
 const inputColor = document.getElementById('input_color');
 const inputMaterialType = document.getElementById('input_material_type');
 
-const inputs = [ inputHeight, inputWeight, inputColor, inputMaterialType ];
+const inputs = [ inputHeight, inputWidth, inputColor, inputMaterialType ];
 
 const inputHeightHidden = document.getElementById('id_height');
-const inputWeightHidden = document.getElementById('id_weight');
+const inputWidthHidden = document.getElementById('id_width');
 const inputColorHidden = document.getElementById('id_color');
 const inputMaterialTypeHidden = document.getElementById('id_material_type');
 
-const inputsHidden = [inputColorHidden, inputHeightHidden, inputWeightHidden, inputMaterialTypeHidden];
+const inputsHidden = [inputColorHidden, inputHeightHidden, inputWidthHidden, inputMaterialTypeHidden];
 
 const ValueInputHidden = {
     [inputHeight.id]: inputHeightHidden.id,
-    [inputWeight.id]: inputWeightHidden.id,
+    [inputWidth.id]: inputWidthHidden.id,
     [inputColor.id]: inputColorHidden.id,
     [inputMaterialType.id]: inputMaterialTypeHidden.id,
 }

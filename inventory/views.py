@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 
 from .forms import ProductForm
-from .models import Product, Price
-
+from .models import Product, Price, Dimension, Characteristic
 
 
 def createProduct(request):
@@ -11,15 +10,25 @@ def createProduct(request):
     if request.method == 'POST':
 
         form = ProductForm( request.POST )
-        print( form['material_type'] )
 
         if form.is_valid():
             product = form.save(commit=False)
             price_product = form.cleaned_data['price']
-            # product.save()
+            height_product = form.cleaned_data['height']
+            width_product = form.cleaned_data['width']
+            color_product = form.cleaned_data['color']
+            material_type_product = form.cleaned_data['material_type']
+
+
+            product.save()
 
             price = Price(product=product, amount=price_product)
-            # price.save()
+            dimension = Dimension( height=height_product, width=width_product )
+            characteristic = Characteristic(product=product, dimension=dimension, color=color_product, material_type=material_type_product)
+
+            price.save()
+            dimension.save()
+            characteristic.save()
             return redirect('inventory:home')
     else:
         form = ProductForm()
@@ -32,7 +41,6 @@ def listProduct(request):
     products = Product.objects.all()[:20]
     for product in products:
         price = Price.objects.filter(product=product).first()
-
         products_with_price.append({
             'product':product,
             'price': price.amount if price else None

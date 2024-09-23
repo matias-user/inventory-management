@@ -10,7 +10,7 @@ class ProductForm(forms.ModelForm):
     brand = forms.CharField( widget=forms.TextInput(attrs={'class':'form-control'}) )
     description = forms.CharField( widget=forms.Textarea(attrs={'class':'form-control form-control-sm','rows':'3'}) )
     height = forms.FloatField( widget=forms.HiddenInput() )
-    weight = forms.FloatField( widget=forms.HiddenInput() )
+    width = forms.FloatField( widget=forms.HiddenInput() )
     color = forms.CharField(widget=forms.HiddenInput())
     material_type = forms.CharField(widget=forms.HiddenInput())
     

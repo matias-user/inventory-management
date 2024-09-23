@@ -15,7 +15,7 @@ class Product(models.Model):
 
 class Dimension(models.Model):
     height = models.FloatField(default=0)
-    weight = models.FloatField(default=0)
+    width = models.FloatField(default=0)
 
 class Characteristic(models.Model):
     product = models.ForeignKey( Product, on_delete=models.CASCADE )
