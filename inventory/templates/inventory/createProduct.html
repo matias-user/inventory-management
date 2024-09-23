@@ -1,23 +1,42 @@
 {% extends 'inventory/base.html' %}
 {% load static %}
 {% block content %}
-<div  class="col-8" >
-    <form class="m-3" action="" method="POST" >
-        {% csrf_token %}
-        {{form.as_p}}
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Button with data-bs-target
-        </button>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body bg-primary">
-              Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+  <div class="col-8">
+    <form class="m-3" action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCaracteristicas">Ingresar más caracteristicas</button>
+      <!-- Modal -->
+      <div class="modal fade" id="modalCaracteristicas" tabindex="-1" aria-labelledby="modalCaracteristicas" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title fs-5" id="modalCaracteristicas">Ingreso más caracteristicas producto</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body g-2">
+                <label for="input_height">Altura</label>
+                <input type="number" class="form-control" name="input_height" id="input_height" >
+                <label for="input_weight">Ancho</label>
+                <input type="number" class="form-control" name="input_weight" id="input_weight" >
+                <label for="input_color">Color</label>
+                <input type="text" class="form-control" name="input_color" id="input_color" >
+                <label for="input_material_type">Tipo de material</label>
+                <input type="text" class="form-control" name="input_material_type" id="input_material_type" >
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary">Seguir</button>
             </div>
           </div>
-        <button class="btn btn-success mt-2" type="submit" >Ingresar</button>
-        <a class="btn btn-secondary mt-2 ms-4" href="{% url 'inventory:home' %}" >Volver a inicio</a> 
-    
+        </div>
+      </div>
+      <button class="btn btn-success mt-2" type="submit">Ingresar</button>
+      <a class="btn btn-secondary mt-2 ms-4" href="{% url 'inventory:home' %}">Volver a inicio</a>
     </form>
-</div>
-<script src="{% static 'js/bootstrap.min.js' %}" ></script>
-<script src="{% static 'js/utilities/insertSkuFormProduct.js' %}"></script>
-{% endblock %}
+  </div>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/utilities/insertSkuFormProduct.js' %}"></script>
+  <script src="{% static 'js/utilities/readInputHiddenProduct.js' %}" ></script>
+
+  {% endblock %}

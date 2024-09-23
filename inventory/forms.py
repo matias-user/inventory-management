@@ -9,10 +9,10 @@ class ProductForm(forms.ModelForm):
     sku = forms.CharField( widget=forms.TextInput(attrs={'class':'form-control'}) )
     brand = forms.CharField( widget=forms.TextInput(attrs={'class':'form-control'}) )
     description = forms.CharField( widget=forms.Textarea(attrs={'class':'form-control'}) )
-    height = forms.FloatField( widget=forms.HiddenInput(attrs={'class':'form-control'}) )
-    weight = forms.FloatField( widget=forms.HiddenInput(attrs={'class':'form-control'}) )
-    color = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control'}))
-    material_type = forms.CharField(widget=forms.HiddenInput(attrs={'class':'form-control'}))
+    height = forms.FloatField( widget=forms.HiddenInput() )
+    weight = forms.FloatField( widget=forms.HiddenInput() )
+    color = forms.CharField(widget=forms.HiddenInput())
+    material_type = forms.CharField(widget=forms.HiddenInput())
     
     class Meta:
         model = Product
