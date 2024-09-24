@@ -1,11 +1,15 @@
 {% extends 'inventory/base.html' %}
 {% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/createProduct.css' %}">
+{% endblock %}
 {% block content %}
   <div class="col-8">
-    <form class="m-3" action="" method="POST">
+    <form class="mt-1" action="" method="POST">
       {% csrf_token %}
-      {{ form.as_p }}
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCaracteristicas">Ingresar más caracteristicas</button>
+      {{ form.as_div }}
+
+      <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#modalCaracteristicas">Más caracteristicas</button>
       <!-- Modal -->
       <div class="modal fade" id="modalCaracteristicas" tabindex="-1" aria-labelledby="modalCaracteristicas" aria-hidden="true">
         <div class="modal-dialog">
@@ -31,8 +35,11 @@
           </div>
         </div>
       </div>
-      <button class="btn btn-success mt-2" type="submit">Ingresar</button>
-      <a class="btn btn-secondary mt-2 ms-4" href="{% url 'inventory:home' %}">Volver a inicio</a>
+      <div class="d-flex" >
+        <button class="btn btn-success mt-2" type="submit">Ingresar</button>
+        <a class="btn btn-secondary mt-2 ms-4" href="{% url 'inventory:home' %}">Volver a inicio</a>
+
+      </div>
     </form>
   </div>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
