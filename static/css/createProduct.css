@@ -1,0 +1,6 @@
+form>div{
+    margin-top: 1.2rem;
+}
+form>div>input[type=number]{
+    width: 40%;
+}
