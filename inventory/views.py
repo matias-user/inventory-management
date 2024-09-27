@@ -66,16 +66,17 @@ def editProduct(request, product_id):
     if request.method == 'POST':
         product_form = ProductForm( request.POST, instance=product )
         product_form.save()
+        print( product_form )
 
         price.amount = product_form.cleaned_data['price']
         price.save()
 
-        dimension.height = product_form.cleaned_data['input_height']
-        dimension.width = product_form.cleaned_data['input_width']
+        dimension.height = product_form.cleaned_data['height']
+        dimension.width = product_form.cleaned_data['width']
         dimension.save()
 
-        characteristic.color = product_form.cleaned_data['input_color']
-        characteristic.material_type = product_form.cleaned_data['input_material_type']
+        characteristic.color = product_form.cleaned_data['color']
+        characteristic.material_type = product_form.cleaned_data['material_type']
         characteristic.save()
 
         return redirect('inventory:home')
