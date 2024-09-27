@@ -60,16 +60,33 @@ def editProduct(request, product_id):
 
     product = Product.objects.get(id=product_id)
     price = Price.objects.filter(product=product).first()
+    characteristic = Characteristic.objects.filter(product=product).first()
+    dimension = Dimension.objects.filter( characteristic=characteristic ).first()
 
     if request.method == 'POST':
         product_form = ProductForm( request.POST, instance=product )
         product_form.save()
-        
+
         price.amount = product_form.cleaned_data['price']
         price.save()
+
+        dimension.height = product_form.cleaned_data['input_height']
+        dimension.width = product_form.cleaned_data['input_width']
+        dimension.save()
+
+        characteristic.color = product_form.cleaned_data['input_color']
+        characteristic.material_type = product_form.cleaned_data['input_material_type']
+        characteristic.save()
+
         return redirect('inventory:home')
     else: 
-        product_form = ProductForm(initial={'price':price.amount}, instance=product )
+        product_form = ProductForm(initial={ 
+            'price':price.amount,
+            'height':dimension.height,
+            'width':dimension.width,
+            'color': characteristic.color,
+            'material_type':characteristic.material_type
+              }, instance=product )
 
     return render(request, 'inventory/edit.html',{'product_form':product_form} )
 
