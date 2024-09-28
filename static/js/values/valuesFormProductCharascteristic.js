@@ -10,7 +10,7 @@ const inputWidthHidden = document.getElementById('id_width');
 const inputColorHidden = document.getElementById('id_color');
 const inputMaterialTypeHidden = document.getElementById('id_material_type');
 
-const inputsHidden = [inputColorHidden, inputHeightHidden, inputWidthHidden, inputMaterialTypeHidden];
+const inputsHidden = [ inputHeightHidden, inputWidthHidden, inputColorHidden,inputMaterialTypeHidden];
 
 const ValueInputHidden = {
     [inputHeight.id]: inputHeightHidden.id,
