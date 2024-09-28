@@ -66,7 +66,6 @@ def editProduct(request, product_id):
     if request.method == 'POST':
         product_form = ProductForm( request.POST, instance=product )
         product_form.save()
-        print( product_form )
 
         price.amount = product_form.cleaned_data['price']
         price.save()
@@ -94,10 +93,8 @@ def editProduct(request, product_id):
 def orderProducts(request, characteristic):
     products_with_price = []
     products = Product.objects.order_by(characteristic)[:20]
-    print( products )
     for product in products:
         price = Price.objects.filter(product=product).first()
-        print( product.dimension_set.all() )
         products_with_price.append({
             'product':product,
             'price': price.amount if price else None
