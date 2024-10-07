@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.contrib.auth import login
 
-from .forms import ProductForm
+from .forms import ProductForm, UserForm
 from .models import Product, Price, Dimension, Characteristic
 
 
@@ -100,3 +101,22 @@ def orderProducts(request, characteristic):
             'price': price.amount if price else None
         })    
     return render(request, 'inventory/home.html', {'products_with_price':products_with_price})
+
+def filterProducts(request, filters):
+    
+    print(filters)
+    return JsonResponse('Todo ok')
+
+
+def register(request):
+
+    if request.method == 'POST':
+        form = UserForm( request.POST or None )
+        if form.is_valid():
+            new_user = form.save()
+            login( request, new_user )
+            return redirect('inventory:home')
+    else:
+        form = UserForm()
+    
+    return render( request, 'registration/register.html', {'form': form } )

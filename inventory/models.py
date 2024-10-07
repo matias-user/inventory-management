@@ -44,3 +44,4 @@ class Supplier(models.Model):
     name = models.CharField(max_length=255)
     phone = models.IntegerField(default=0)
     contact_email = models.IntegerField( null=False )
+
