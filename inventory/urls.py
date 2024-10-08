@@ -5,7 +5,7 @@ from . import views
 
 app_name= "inventory"
 urlpatterns = [
-    # path('', views.listProduct, name=''),
+    path('', views.redirectHome),
     path('home/', views.listProduct, name='home' ),
     path('home/<str:characteristic>/', views.orderProducts, name='home-ordered' ),
     # re_path('', views.filterProducts, name='filter_products' ),

@@ -1,0 +1,17 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+
+<section class="d-flex justify-content-center mt-4" >
+    <form method="post"  >
+        {% csrf_token %}
+        {{ form.as_p }}  
+        <div class="d-grid">
+            <button class="btn btn-success d-block" type="submit" >Crear</button>  
+
+        </div>
+    </form>    
+
+</section>
+
+{% endblock %}

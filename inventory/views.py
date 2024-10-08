@@ -5,6 +5,8 @@ from django.contrib.auth import login
 from .forms import ProductForm, UserForm
 from .models import Product, Price, Dimension, Characteristic
 
+def redirectHome(request):
+    return redirect('inventory:home')
 
 def createProduct(request):
 
