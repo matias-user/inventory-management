@@ -1,13 +1,14 @@
 {% extends 'inventory/base.html' %}
-
+{% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/registration/register.css' %}">
 
-<section class="d-flex justify-content-center mt-4" >
-    <form method="post"  >
+<section class="mt-4" >
+    <form method="post" class="d-flex flex-column align-items-center"  >
         {% csrf_token %}
         {{ form.as_p }}  
         <div class="d-grid">
-            <button class="btn btn-success d-block" type="submit" >Crear</button>  
+            <button class="btn btn-success mt-3" type="submit" >Crear</button>  
 
         </div>
     </form>    

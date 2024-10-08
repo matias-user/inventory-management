@@ -1,5 +1,5 @@
 from django.urls import path, include
-# from django.contrib.auth import views as auth_views
+from django.contrib.auth import views as auth_views
 from . import views
 
 
@@ -13,6 +13,7 @@ urlpatterns = [
     path('delete/<str:product_id>/', views.deleteProduct, name='delete'),
     path('edit/<str:product_id>/', views.editProduct, name='edit' ),
     path('register/', views.register, name='register' ),
-    path('accounts/', include('django.contrib.auth.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/login/', auth_views.LoginView.as_view(), name='login' )
 ]
     
