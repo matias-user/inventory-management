@@ -1,6 +1,7 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from . import views
+from .forms import LoginForm
 
 
 app_name= "inventory"
@@ -13,7 +14,7 @@ urlpatterns = [
     path('delete/<str:product_id>/', views.deleteProduct, name='delete'),
     path('edit/<str:product_id>/', views.editProduct, name='edit' ),
     path('register/', views.register, name='register' ),
+    path('accounts/login/', auth_views.LoginView.as_view( authentication_form=LoginForm ), name='login' ),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/login/', auth_views.LoginView.as_view(), name='login' )
 ]
     
