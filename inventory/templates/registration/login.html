@@ -6,6 +6,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         
+        <a class="link-underline-primary my-2" href="{% url 'inventory:password_reset' %}">Reestablecer contraseña</a>
         <div class="d-grid">
             <button class="btn btn-primary mt-3" >Iniciar sesión</button>
         </div>
